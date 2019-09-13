@@ -1,0 +1,610 @@
+$regfile =
+"m16def.dat"
+$crystal = 2000000
+$baud = 9600
+Config Adc = Single
+, Prescaler = Auto , Reference = Avcc
+Config Portc.1 =
+Output
+Start Adc
+Config Timer1 = Pwm
+, Pwm = 8 , Prescale = 1 , Compare A Pwm = Clear Down , Compare B Pwm = Clear
+Down
+
+
+Start Timer1
+
+
+
+Dim A As String * 1
+
+
+
+Dim B As Integer
+
+
+
+Dim C As Integer
+
+
+
+Do
+
+
+
+Cls
+
+
+
+B = Getadc(0)
+
+
+
+C = Getadc(1)
+
+
+
+If B > 990 And C
+> 990 Then
+
+
+
+Cls
+
+
+
+Lcd
+"Forward"
+
+
+
+Pwm1b = 200
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1a = 200
+
+
+
+Portd.6 = 0
+
+
+
+Waitms 200
+
+
+
+Elseif B < 990
+And C > 990 Then
+
+
+
+Cls
+
+
+
+Portc.1 = 1
+
+
+
+Pwm1b = 150
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1a = 150
+
+
+
+Portd.6 = 0
+
+
+
+Lcd
+"slow"
+
+
+
+Waitms 200
+
+
+
+Elseif B > 990
+And C < 990 Then
+
+
+
+Cls
+
+
+
+Portc.1 = 0
+
+
+
+Pwm1b = 0
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1a = 0
+
+
+
+Portd.6 = 0
+
+
+
+Lcd
+"stop"
+
+
+
+End If
+
+
+
+ 
+
+
+
+Do
+
+
+
+A = Waitkey()
+
+
+
+If A =
+"2" Then
+
+
+
+Cls
+
+
+
+Lcd
+"slowdown"
+
+
+
+Pwm1b = 150
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1a = 150
+
+
+
+Portd.6 = 0
+
+
+
+Waitms 200
+
+
+
+Elseif A =
+"s" Then
+
+
+
+Cls
+
+
+
+Lcd
+"Stop"
+
+
+
+Pwm1b = 0
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1a = 0
+
+
+
+Portd.6 = 0
+
+
+
+Waitms 200
+
+
+
+Elseif A =
+"p" Then
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1b = 80
+
+
+
+Portd.5 = 1
+
+
+
+Pwm1a = 80
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 0
+
+
+
+Pwm1a = 200
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd "park"
+
+
+
+Pwm1b = 200
+
+
+
+Pwm1a = 0
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 200
+
+
+
+Pwm1a = 0
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd
+"park"
+
+
+
+Pwm1b = 0
+
+
+
+Pwm1a = 200
+
+
+
+Wait 2
+
+
+
+Elseif A =
+"m" Then
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Portd.3 = 0
+
+
+
+Pwm1b = 80
+
+
+
+Portd.5 = 1
+
+
+
+Pwm1a = 80
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 200
+
+
+
+Pwm1a = 0
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 0
+
+
+
+Pwm1a = 200
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 0
+
+
+
+Pwm1a = 200
+
+
+
+Wait 2
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 80
+
+
+
+Pwm1a = 80
+
+
+
+Wait 3
+
+
+
+Cls
+
+
+
+Lcd
+"market"
+
+
+
+Pwm1b = 0
+
+
+
+Pwm1a = 200
+
+
+
+Wait 2
+
+
+
+End If
+
+
+
+ Loop
+
+
+
+Loop
+
+
+
+End
